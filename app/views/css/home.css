@@ -1,0 +1,14 @@
+.badge-circle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 8px 14px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.card-img-top {
+    background: #f6f6f6;
+    padding: 20px;
+}
