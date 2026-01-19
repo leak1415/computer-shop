@@ -1,6 +1,7 @@
 <?php include "layouts/header.php" ?>
 <?php include "navbar.php"?>
 <?php require_once "app/models/home_db/home.php";?>
+<?php require_once __DIR__ . "/../models/home_db/image_db.php";?>
 
 <section class="hero-section d-flex align-items-center">
     <div class="hero-content container">
@@ -181,61 +182,55 @@
             <p class="section-subtitle">Handpicked laptops for every budget and requirement</p>
         </div>
 
-        <div class="row g-4">
-            <!-- Gaming Laptop -->
-            <div class="row">
+        <div class="products-grid">
             <?php while($row = $result->fetch_assoc()) { ?>
-                <div class="col-lg-3 col-md-6" style="margin-bottom: 20px;">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="badge-circle bg-danger text-white">HOT</span>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="badge-circle bg-danger text-white">HOT</span>
+                        
+                        <!-- You can replace with DB field for image if available -->
+                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop" alt="ASUS ROG Gaming Laptop" class="card-img-top">
+                       
                             
-                            <!-- You can replace with DB field for image if available -->
-                            <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop" 
-                                alt="<?php echo $row['product_name']; ?>" 
-                                class="card-img-top">
-                                
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm">
-                                    <i class="bi bi-eye"></i> Quick View
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body" style="padding: 10px 20px;">
-                            
-                            <div class="product-category"><?php echo $row['category_name']; ?></div>
-                            
-                            <h5 class="product-title"><?php echo $row['product_name']; ?></h5>
-                            
-                            <div class="product-specs">
-                                <span><?php echo $row['cpu']; ?></span>
-                                <span><?php echo $row['gpu']; ?></span>
-                                <span><?php echo $row['ram']; ?> RAM</span>
-                            </div>
-                            
-                            <div class="product-rating">
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-half text-warning"></i>
-                                <span class="text-muted">(<?php echo $row['review_count']; ?>)</span>
-                            </div>
-                            
-                            <div class="product-price">
-                                <span class="current-price">$<?php echo number_format($row['price'], 0); ?></span>
-                                <span class="old-price">$<?php echo number_format($row['old_price'], 0); ?></span>
-                            </div>
-                            
-                            <button class="btn btn-primary w-100 add-to-cart" style="margin-bottom: 15px">
-                                <i class="bi bi-cart-plus"></i> Add to Cart
+                        <div class="product-overlay">
+                            <button class="btn btn-primary btn-sm">
+                                <i class="bi bi-eye"></i> Quick View
                             </button>
                         </div>
                     </div>
+                    <div class="card-body" style="padding">
+                        
+                        <div class="product-category"><?php echo $row['category_name']; ?></div>
+                        
+                        <h5 class="product-title"><?php echo $row['product_name']; ?></h5>
+                        
+                        <div class="product-specs">
+                            <span><?php echo $row['cpu']; ?></span>
+                            <span><?php echo $row['gpu']; ?></span>
+                            <span><?php echo $row['ram']; ?> RAM</span>
+                        </div>
+                        
+                        <div class="product-rating">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-half text-warning"></i>
+                            <span class="text-muted">(<?php echo $row['review_count']; ?>)</span>
+                        </div>
+                        
+                        <div class="product-price">
+                            <span class="current-price">$<?php echo number_format($row['price'], 0); ?></span>
+                            <span class="old-price">$<?php echo number_format($row['old_price'], 0); ?></span>
+                        </div>
+                        
+                        <button class="btn btn-primary w-100 add-to-cart">
+                            <i class="bi bi-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
                 </div>
             <?php } ?>
-            </div>
-
+        </div>
 
         <div class="text-center mt-5">
             <a href="index.php?page=catalog" class="btn btn-outline-primary btn-lg">
