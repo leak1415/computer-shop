@@ -10,7 +10,13 @@ switch($page) {
         include "app/views/sale.php";
         break;
     case 'blog':
-        include "app/views/layouts/blog.php";
+        include "app/views/blog.php";
+        break;
+    case 'blog-detail':
+        include "app/views/blog-detail.php";
+        break;
+    case 'tips':
+        include "app/views/tips.php";
         break;
     case 'contact':
         include "app/views/contact.php";
