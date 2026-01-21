@@ -39,7 +39,7 @@
                 <div class="promo-card enhanced-promo">
                     <div class="promo-left">
                         <div class="discount-badge">-20%</div>
-                        <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=300&fit=crop" alt="Gaming Laptop" class="promo-img">
+                        <img src="app/views/images/<?php echo $images[0]; ?>" alt="Gaming Laptop" class="promo-img">
                     </div>
                     <div class="promo-right">
                         <div class="brand-header">
@@ -72,7 +72,7 @@
                 <div class="promo-card enhanced-promo">
                     <div class="promo-left">
                         <div class="discount-badge new-badge">NEW</div>
-                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop" alt="MacBook" class="promo-img">
+                        <img src="app/views/images/<?php echo $images[1]; ?>" alt="MacBook" class="promo-img">
                     </div>
                     <div class="promo-right">
                         <div class="brand-header">
@@ -110,7 +110,7 @@
                 <div class="promo-card enhanced-promo">
                     <div class="promo-left">
                         <div class="discount-badge">-20%</div>
-                        <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=300&fit=crop" alt="Gaming Laptop" class="promo-img">
+                        <img src="app/views/images/<?php echo $images[2]; ?>" alt="Gaming Laptop" class="promo-img">
                     </div>
                     <div class="promo-right">
                         <div class="brand-header">
@@ -143,7 +143,7 @@
                 <div class="promo-card enhanced-promo">
                     <div class="promo-left">
                         <div class="discount-badge new-badge">NEW</div>
-                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop" alt="MacBook" class="promo-img">
+                        <img src="app/views/images/<?php echo $images[3]; ?>" alt="MacBook" class="promo-img">
                     </div>
                     <div class="promo-right">
                         <div class="brand-header">
@@ -183,13 +183,19 @@
         </div>
 
         <div class="products-grid">
-            <?php while($row = $result->fetch_assoc()) { ?>
+            <?php 
+            $image_index = 0;
+            while($row = $result->fetch_assoc()) { 
+                // Get image from image_db array, loop back to start if we run out
+                $image_name = $images[$image_index % count($images)];
+                $image_index++;
+            ?>
                 <div class="product-card">
                     <div class="product-image">
                         <span class="badge-circle bg-danger text-white">HOT</span>
                         
-                        <!-- You can replace with DB field for image if available -->
-                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop" alt="ASUS ROG Gaming Laptop" class="card-img-top">
+                        <!-- Dynamic image from image_db -->
+                        <img src="app/views/images/<?php echo $image_name; ?>" alt="<?php echo htmlspecialchars($row['product_name']); ?>" class="card-img-top">
                        
                             
                         <div class="product-overlay">
