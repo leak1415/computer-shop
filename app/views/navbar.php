@@ -34,13 +34,16 @@ $pages = array(
         </ul>
 
       <!-- Cart -->
-      <div>
-        <a href="#" class="cart-link text-decoration-none">
-          <i class="bi bi-bag"></i> MY CART:
+      <div class="d-flex align-items-center gap-3">
+        <a href="#" class="cart-link text-decoration-none position-relative">
+          <i class="bi bi-bag fs-5"></i>
+          <span class="cart-count badge bg-danger rounded-circle position-absolute top-0 start-100 translate-middle">0</span>
         </a>
-        <span class="text-secondary">1 item(s)</span>
-      </div>
-        <div class="profile"><a href="#" class="text-dark text-decoration-none"><i class="bi bi-person"></i></a></div>
+        <div class="profile">
+          <a href="#" class="text-dark text-decoration-none">
+            <i class="bi bi-person fs-5"></i>
+          </a>
+        </div>
       </div>
   </div>
 </nav>

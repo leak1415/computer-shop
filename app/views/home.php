@@ -5,24 +5,24 @@
 
 <section class="hero-section d-flex align-items-center">
     <div class="hero-content container">
-      <h1 class="main-title text-uppercase">
-        PREMIUM LAPTOPS<br>FOR EVERY NEED
-      </h1>
-      
-      <p class="subtitle">
-        Gaming • Business • Student • Creative Professionals
-      </p>
-      
-      <div class="hero-buttons">
-        <a href="index.php?page=catalog" class="btn btn-primary btn-lg shop-btn rounded-pill shadow-lg me-3">
-          <i class="bi bi-bag-fill me-2"></i>SHOP NOW
-        </a>
-        <a href="#categories" class="btn btn-outline-light btn-lg rounded-pill shadow-lg">
-          <i class="bi bi-grid-3x3-gap me-2"></i>BROWSE CATEGORIES
-        </a>
-      </div>
-      
-      </div>
+        <h1 class="main-title text-uppercase">
+            PREMIUM LAPTOPS<br>FOR EVERY NEED
+        </h1>
+
+        <p class="subtitle">
+            Gaming • Business • Student • Creative Professionals
+        </p>
+
+        <div class="hero-buttons">
+            <a href="index.php?page=catalog" class="btn btn-primary btn-lg shop-btn rounded-pill shadow-lg me-3">
+                <i class="bi bi-bag-fill me-2"></i>SHOP NOW
+            </a>
+            <a href="#categories" class="btn btn-outline-light btn-lg rounded-pill shadow-lg">
+                <i class="bi bi-grid-3x3-gap me-2"></i>BROWSE CATEGORIES
+            </a>
+        </div>
+
+    </div>
     </div>
 </section>
 
@@ -61,7 +61,7 @@
                             <span class="original-price">$1,899</span>
                             <span class="sale-price">$1,519</span>
                         </div>
-                        <a href="index.php?page=catalog" class="promo-link">
+                        <a href="app/views/rog.php" class="promo-link">
                             <i class="bi bi-arrow-right-circle"></i> Shop Gaming Laptops
                         </a>
                     </div>
@@ -104,7 +104,7 @@
 </section>
 <section class="py-5">
     <div class="container">
-        
+
         <div class="row g-4">
             <div class="col-md-6">
                 <div class="promo-card enhanced-promo">
@@ -132,7 +132,7 @@
                             <span class="original-price">$1,899</span>
                             <span class="sale-price">$1,519</span>
                         </div>
-                        <a href="index.php?page=catalog" class="promo-link">
+                        <a href="app/views/rog.php" class="promo-link">
                             <i class="bi bi-arrow-right-circle"></i> Shop Gaming Laptops
                         </a>
                     </div>
@@ -190,51 +190,52 @@
                 $image_name = $images[$image_index % count($images)];
                 $image_index++;
             ?>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="badge-circle bg-danger text-white">HOT</span>
-                        
-                        <!-- Dynamic image from image_db -->
-                        <img src="app/views/images/<?php echo $image_name; ?>" alt="<?php echo htmlspecialchars($row['product_name']); ?>" class="card-img-top">
-                       
-                            
-                        <div class="product-overlay">
-                            <button class="btn btn-primary btn-sm">
-                                <i class="bi bi-eye"></i> Quick View
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-body" style="padding">
-                        
-                        <div class="product-category"><?php echo $row['category_name']; ?></div>
-                        
-                        <h5 class="product-title"><?php echo $row['product_name']; ?></h5>
-                        
-                        <div class="product-specs">
-                            <span><?php echo $row['cpu']; ?></span>
-                            <span><?php echo $row['gpu']; ?></span>
-                            <span><?php echo $row['ram']; ?> RAM</span>
-                        </div>
-                        
-                        <div class="product-rating">
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-half text-warning"></i>
-                            <span class="text-muted">(<?php echo $row['review_count']; ?>)</span>
-                        </div>
-                        
-                        <div class="product-price">
-                            <span class="current-price">$<?php echo number_format($row['price'], 0); ?></span>
-                            <span class="old-price">$<?php echo number_format($row['old_price'], 0); ?></span>
-                        </div>
-                        
-                        <button class="btn btn-primary w-100 add-to-cart">
-                            <i class="bi bi-cart-plus"></i> Add to Cart
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge-circle bg-danger text-white">HOT</span>
+
+                    <!-- Dynamic image from image_db -->
+                    <img src="app/views/images/<?php echo $image_name; ?>"
+                        alt="<?php echo htmlspecialchars($row['product_name']); ?>" class="card-img-top">
+
+
+                    <div class="product-overlay">
+                        <button class="btn btn-primary btn-sm quick-view-btn">
+                            <i class="bi bi-eye"></i> Quick View
                         </button>
                     </div>
                 </div>
+                <div class="card-body">
+
+                    <div class="product-category"><?php echo $row['category_name']; ?></div>
+
+                    <h5 class="product-title"><?php echo $row['product_name']; ?></h5>
+
+                    <div class="product-specs">
+                        <span><?php echo $row['cpu']; ?></span>
+                        <span><?php echo $row['gpu']; ?></span>
+                        <span><?php echo $row['ram']; ?> RAM</span>
+                    </div>
+
+                    <div class="product-rating">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-half text-warning"></i>
+                        <span class="text-muted">(<?php echo $row['review_count']; ?>)</span>
+                    </div>
+
+                    <div class="product-price">
+                        <span class="current-price">$<?php echo number_format($row['price'], 0); ?></span>
+                        <span class="old-price">$<?php echo number_format($row['old_price'], 0); ?></span>
+                    </div>
+
+                    <button class="btn btn-primary w-100 add-to-cart">
+                        <i class="bi bi-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
             <?php } ?>
         </div>
 
@@ -380,9 +381,11 @@
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
                     </div>
-                    <p class="testimonial-text">"Amazing service and fast delivery! The gaming laptop I ordered exceeded my expectations. Highly recommend!"</p>
+                    <p class="testimonial-text">"Amazing service and fast delivery! The gaming laptop I ordered exceeded
+                        my expectations. Highly recommend!"</p>
                     <div class="testimonial-author">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face" alt="Customer" class="author-avatar">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face"
+                            alt="Customer" class="author-avatar">
                         <div>
                             <h6 class="author-name">John Smith</h6>
                             <span class="author-title">Gaming Enthusiast</span>
@@ -400,9 +403,11 @@
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
                     </div>
-                    <p class="testimonial-text">"Great selection of business laptops. Found the perfect Dell XPS for my work. Customer service was very helpful!"</p>
+                    <p class="testimonial-text">"Great selection of business laptops. Found the perfect Dell XPS for my
+                        work. Customer service was very helpful!"</p>
                     <div class="testimonial-author">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=50&h=50&fit=crop&crop=face" alt="Customer" class="author-avatar">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=50&h=50&fit=crop&crop=face"
+                            alt="Customer" class="author-avatar">
                         <div>
                             <h6 class="author-name">Sarah Johnson</h6>
                             <span class="author-title">Business Owner</span>
@@ -420,15 +425,17 @@
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-half text-warning"></i>
                     </div>
-                    <p class="testimonial-text">"Perfect student laptop at an amazing price. Fast shipping and easy returns policy. Will definitely shop here again!"</p>
+                    <p class="testimonial-text">"Perfect student laptop at an amazing price. Fast shipping and easy
+                        returns policy. Will definitely shop here again!"</p>
                     <div class="testimonial-author">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face" alt="Customer" class="author-avatar">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face"
+                            alt="Customer" class="author-avatar">
                         <div>
                             <h6 class="author-name">Mike Chen</h6>
                             <span class="author-title">College Student</span>
                         </div>
                     </div>
-             </div>
+                </div>
             </div>
 
-<?php include "layouts/footer.php" ?>
+            <?php include "layouts/footer.php" ?>

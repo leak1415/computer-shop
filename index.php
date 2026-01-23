@@ -12,6 +12,12 @@ switch($page) {
     case 'blog':
         include "app/views/blog.php";
         break;
+    case 'blog-detail':
+        include "app/views/blog-detail.php";
+        break;
+    case 'tips':
+        include "app/views/tips.php";
+        break;
     case 'contact':
         include "app/views/contact.php";
         break;
