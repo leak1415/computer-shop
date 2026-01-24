@@ -196,7 +196,6 @@
                         
                         <!-- Dynamic image from image_db -->
                         <img src="app/views/images/<?php echo $image_name; ?>" alt="<?php echo htmlspecialchars($row['product_name']); ?>" class="card-img-top">
-                       
                             
                         <div class="product-overlay">
                             <button class="btn btn-primary btn-sm">
@@ -204,7 +203,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="card-body" style="padding">
+                    <div class="card-body" style="padding: 15px;">
                         
                         <div class="product-category"><?php echo $row['category_name']; ?></div>
                         
