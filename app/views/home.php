@@ -1,5 +1,7 @@
 <?php include "layouts/header.php" ?>
 <?php include "navbar.php"?>
+<?php require_once "app/models/home_db/home.php";?>
+<?php require_once __DIR__ . "/../models/home_db/image_db.php";?>
 
 <section class="hero-section d-flex align-items-center">
     <div class="hero-content container">
@@ -32,13 +34,12 @@
             <h2 class="section-title">SPECIAL OFFERS</h2>
             <p class="section-subtitle">Exclusive deals on top laptop brands</p>
         </div>
-        
         <div class="row g-4">
             <div class="col-md-6">
                 <div class="promo-card enhanced-promo">
                     <div class="promo-left">
                         <div class="discount-badge">-20%</div>
-                        <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=300&fit=crop" alt="Gaming Laptop" class="promo-img">
+                        <img src="app/views/images/<?php echo $images[0]; ?>" alt="Gaming Laptop" class="promo-img">
                     </div>
                     <div class="promo-right">
                         <div class="brand-header">
@@ -71,7 +72,78 @@
                 <div class="promo-card enhanced-promo">
                     <div class="promo-left">
                         <div class="discount-badge new-badge">NEW</div>
-                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop" alt="MacBook" class="promo-img">
+                        <img src="app/views/images/<?php echo $images[1]; ?>" alt="MacBook" class="promo-img">
+                    </div>
+                    <div class="promo-right">
+                        <div class="brand-header">
+                            <div class="brand-logo apple-logo">
+                                <i class="bi bi-apple"></i>
+                                <span>MacBook</span>
+                            </div>
+                            <div class="rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                        <h3 class="promo-title">MacBook Pro M3</h3>
+                        <p class="promo-desc">M3 Chip • 18GB RAM • 512GB SSD</p>
+                        <div class="price-tag">
+                            <span class="sale-price">$1,999</span>
+                        </div>
+                        <a href="index.php?page=catalog" class="promo-link">
+                            <i class="bi bi-arrow-right-circle"></i> Shop Apple Laptops
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5">
+    <div class="container">
+        
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="promo-card enhanced-promo">
+                    <div class="promo-left">
+                        <div class="discount-badge">-20%</div>
+                        <img src="app/views/images/<?php echo $images[2]; ?>" alt="Gaming Laptop" class="promo-img">
+                    </div>
+                    <div class="promo-right">
+                        <div class="brand-header">
+                            <div class="brand-logo">
+                                <i class="bi bi-cpu-fill"></i>
+                                <span>ROG</span>
+                            </div>
+                            <div class="rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                        </div>
+                        <h3 class="promo-title">Gaming Powerhouse</h3>
+                        <p class="promo-desc">RTX 4070 • Intel i7 • 32GB RAM</p>
+                        <div class="price-tag">
+                            <span class="original-price">$1,899</span>
+                            <span class="sale-price">$1,519</span>
+                        </div>
+                        <a href="index.php?page=catalog" class="promo-link">
+                            <i class="bi bi-arrow-right-circle"></i> Shop Gaming Laptops
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="promo-card enhanced-promo">
+                    <div class="promo-left">
+                        <div class="discount-badge new-badge">NEW</div>
+                        <img src="app/views/images/<?php echo $images[3]; ?>" alt="MacBook" class="promo-img">
                     </div>
                     <div class="promo-right">
                         <div class="brand-header">
@@ -110,160 +182,59 @@
             <p class="section-subtitle">Handpicked laptops for every budget and requirement</p>
         </div>
 
-        <div class="row g-4">
-            <!-- Gaming Laptop -->
-            <div class="col-lg-3 col-md-6">
+        <div class="products-grid">
+            <?php 
+            $image_index = 0;
+            while($row = $result->fetch_assoc()) { 
+                // Get image from image_db array, loop back to start if we run out
+                $image_name = $images[$image_index % count($images)];
+                $image_index++;
+            ?>
                 <div class="product-card">
                     <div class="product-image">
                         <span class="badge-circle bg-danger text-white">HOT</span>
-                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop" alt="ASUS ROG Gaming Laptop" class="card-img-top">
+                        
+                        <!-- Dynamic image from image_db -->
+                        <img src="app/views/images/<?php echo $image_name; ?>" alt="<?php echo htmlspecialchars($row['product_name']); ?>" class="card-img-top">
+                            
                         <div class="product-overlay">
                             <button class="btn btn-primary btn-sm">
                                 <i class="bi bi-eye"></i> Quick View
                             </button>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="product-category">Gaming</div>
-                        <h5 class="product-title">ASUS ROG Strix G16</h5>
+                    <div class="card-body" style="padding: 15px;">
+                        
+                        <div class="product-category"><?php echo $row['category_name']; ?></div>
+                        
+                        <h5 class="product-title"><?php echo $row['product_name']; ?></h5>
+                        
                         <div class="product-specs">
-                            <span>Intel i9-13900HX</span>
-                            <span>RTX 4080</span>
-                            <span>32GB RAM</span>
+                            <span><?php echo $row['cpu']; ?></span>
+                            <span><?php echo $row['gpu']; ?></span>
+                            <span><?php echo $row['ram']; ?> RAM</span>
                         </div>
+                        
                         <div class="product-rating">
                             <i class="bi bi-star-fill text-warning"></i>
                             <i class="bi bi-star-fill text-warning"></i>
                             <i class="bi bi-star-fill text-warning"></i>
                             <i class="bi bi-star-fill text-warning"></i>
                             <i class="bi bi-star-half text-warning"></i>
-                            <span class="text-muted">(124)</span>
+                            <span class="text-muted">(<?php echo $row['review_count']; ?>)</span>
                         </div>
+                        
                         <div class="product-price">
-                            <span class="current-price">$2,499</span>
-                            <span class="old-price">$2,899</span>
+                            <span class="current-price">$<?php echo number_format($row['price'], 0); ?></span>
+                            <span class="old-price">$<?php echo number_format($row['old_price'], 0); ?></span>
                         </div>
+                        
                         <button class="btn btn-primary w-100 add-to-cart">
                             <i class="bi bi-cart-plus"></i> Add to Cart
                         </button>
                     </div>
                 </div>
-            </div>
-
-            <!-- Business Laptop -->
-            <div class="col-lg-3 col-md-6">
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="badge-circle bg-success text-white">NEW</span>
-                        <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=300&fit=crop" alt="Dell XPS Business Laptop" class="card-img-top">
-                        <div class="product-overlay">
-                            <button class="btn btn-primary btn-sm">
-                                <i class="bi bi-eye"></i> Quick View
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="product-category">Business</div>
-                        <h5 class="product-title">Dell XPS 15</h5>
-                        <div class="product-specs">
-                            <span>Intel i7-13700H</span>
-                            <span>16GB RAM</span>
-                            <span>512GB SSD</span>
-                        </div>
-                        <div class="product-rating">
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star text-warning"></i>
-                            <span class="text-muted">(89)</span>
-                        </div>
-                        <div class="product-price">
-                            <span class="current-price">$1,799</span>
-                        </div>
-                        <button class="btn btn-primary w-100 add-to-cart">
-                            <i class="bi bi-cart-plus"></i> Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Student Laptop -->
-            <div class="col-lg-3 col-md-6">
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="badge-circle bg-primary text-white">SALE</span>
-                        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop" alt="HP Pavilion Student Laptop" class="card-img-top">
-                        <div class="product-overlay">
-                            <button class="btn btn-primary btn-sm">
-                                <i class="bi bi-eye"></i> Quick View
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="product-category">Student</div>
-                        <h5 class="product-title">HP Pavilion 14</h5>
-                        <div class="product-specs">
-                            <span>AMD Ryzen 5</span>
-                            <span>8GB RAM</span>
-                            <span>256GB SSD</span>
-                        </div>
-                        <div class="product-rating">
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star text-warning"></i>
-                            <span class="text-muted">(156)</span>
-                        </div>
-                        <div class="product-price">
-                            <span class="current-price">$649</span>
-                            <span class="old-price">$799</span>
-                        </div>
-                        <button class="btn btn-primary w-100 add-to-cart">
-                            <i class="bi bi-cart-plus"></i> Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Creative Laptop -->
-            <div class="col-lg-3 col-md-6">
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="badge-circle bg-dark text-white">PRO</span>
-                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop" alt="MacBook Pro Creative Laptop" class="card-img-top">
-                        <div class="product-overlay">
-                            <button class="btn btn-primary btn-sm">
-                                <i class="bi bi-eye"></i> Quick View
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="product-category">Creative</div>
-                        <h5 class="product-title">MacBook Pro 14"</h5>
-                        <div class="product-specs">
-                            <span>M3 Pro Chip</span>
-                            <span>18GB RAM</span>
-                            <span>512GB SSD</span>
-                        </div>
-                        <div class="product-rating">
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <span class="text-muted">(203)</span>
-                        </div>
-                        <div class="product-price">
-                            <span class="current-price">$1,999</span>
-                        </div>
-                        <button class="btn btn-primary w-100 add-to-cart">
-                            <i class="bi bi-cart-plus"></i> Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
 
         <div class="text-center mt-5">
@@ -456,6 +427,7 @@
                             <span class="author-title">College Student</span>
                         </div>
                     </div>
-                </div>
+             </div>
+            </div>
 
 <?php include "layouts/footer.php" ?>

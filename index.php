@@ -1,4 +1,6 @@
 <?php 
+require_once "app/models/home_db/database.php";  // Import the database connection
+
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 include "app/views/layouts/header.php"; 
 
