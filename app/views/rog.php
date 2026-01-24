@@ -1,7 +1,7 @@
 <?php include "layouts/header.php" ?>
 <?php include "navbar.php"?>
-<?php require_once __DIR__ . "/../models/home_db/home.php";?>
-<?php require_once __DIR__ . "/../models/rog_db/rog_image_db.php";?>
+<?php require_once "app/models/home_db/home.php";?>
+<?php require_once __DIR__ . "/../models/home_db/image_db.php";?>
 
 <!-- ROG Gaming Laptops Section -->
 <section class="py-5">
