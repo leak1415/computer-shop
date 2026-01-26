@@ -1,5 +1,5 @@
-<?php include "layouts/header.php" ?>
-<?php include "navbar.php"?>
+<?php include __DIR__ . "/layouts/header.php" ?>
+<?php include "navbar.php" ?>
 <?php require_once "app/models/home_db/home.php";?>
 <?php require_once __DIR__ . "/../models/home_db/image_db.php";?>
 
@@ -430,4 +430,4 @@
              </div>
             </div>
 
-<?php include "layouts/footer.php" ?>
+<?php include __DIR__ . "/layouts/footer.php" ?>

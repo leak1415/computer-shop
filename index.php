@@ -26,7 +26,9 @@ switch($page) {
     default:
         include "app/views/home.php";
         break;
+
 }
+
 
 include "app/views/layouts/footer.php"; 
 ?>
