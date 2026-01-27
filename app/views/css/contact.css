@@ -1,0 +1,100 @@
+.social-icon i {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.social-icon:hover i {
+    transform: scale(1.1);
+}
+.social-icon.facebook:hover i {
+    color: #1877F2; 
+}
+.social-icon.youtube:hover i {
+    color: #FF0000;
+}
+
+.social-icon.tiktok:hover i {
+    background: linear-gradient(45deg, #69C9D0, #EE1D52);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.social-icon.telegram:hover i {
+    color: #0088cc; 
+}
+
+.footer {
+    background: #f8f9fa;
+    color: #333;
+    padding: 3rem 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.footer-logo {
+    max-width: 140px;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.05);
+}
+
+.footer-title {
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.footer-text, .footer p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.app-badge {
+    max-width: 110px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+}
+
+.app-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icon {
+    font-size: 1.8rem;
+    color: #555;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+}
+
+.social-icon.facebook:hover { color: #1877F2; }
+.social-icon.youtube:hover { color: #FF0000; }
+.social-icon.tiktok:hover { color: #000; background: linear-gradient(45deg, #69C9D0, #EE1D52); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.social-icon.telegram:hover { color: #0088cc; }
+
+.payment-img {
+    max-width: 400px;
+    border-radius: 8px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.payment-img:hover {
+    transform: scale(1.2); /* 20% bigger */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+@media (max-width: 768px) {
+    .footer-logo { margin-bottom: 1rem; }
+    .app-badge { max-width: 90px; }
+}
