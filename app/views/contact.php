@@ -1,51 +1,5 @@
-<?php
-$pages = array(
-    "HOME" => "index.php?page=home",
-    "CATALOG" => "index.php?page=catalog",
-    "SALE" => "index.php?page=sale",
-    "BLOG" => "index.php?page=blog",
-    "CONTACT US" => "index.php?page=contact"
-);
-?>
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-white border-bottom">
-    <div class="container">
-        <!-- Logo -->
-        <a class="navbar-brand brand-logo" href="index.php">
-            <i class="bi bi-laptop"></i> LAPTOP<span>SHOP</span>
-        </a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="mainNavbar">
-            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                <?php foreach($pages as $key => $value) : ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $value; ?>"><?php echo $key; ?></a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-
-         
-            <div>
-                <a href="#" class="cart-link text-decoration-none">
-                    <i class="bi bi-bag"></i> MY CART:
-                </a>
-                <span class="text-secondary">1 item(s)</span>
-            </div>
-
-      
-            <div class="profile">
-                <a href="#" class="text-dark text-decoration-none">
-                    <i class="bi bi-person"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</nav>
-
+<?php include __DIR__ . "/layouts/header.php" ?>
+<?php include "navbar.php" ?>
 <div class="container">
     <section class="contact-section my-5">
         <h1 class="text-center text-primary mb-4">Let's Chat, Reach Out to Us</h1>
@@ -117,17 +71,17 @@ $pages = array(
             <div class="col-12 col-md-4 mb-4 mb-md-0">
                 <h5 class="footer-title">Get Our App</h5>
                 <div class="d-flex justify-content-center justify-content-md-start gap-2">
-                    <a href="#"><img src="app/views/images/Google-app-NS.webp" alt="Google Play" class="app-badge"></a>
-                    <a href="#"><img src="app/views/images/apple-app-store-qr-code-sticker-u1842-a173-x418.png" alt="App Store" class="app-badge"></a>
+                    <a href="https://play.google.com/store" target="_blank"><img src="app/views/images/Google-app-NS.webp" alt="Google Play" class="app-badge"></a>
+                    <a href="https://apps.apple.com" target="_blank"><img src="app/views/images/apple-app-store-qr-code-sticker-u1842-a173-x418.png" alt="App Store" class="app-badge"></a>
                 </div>
             </div>
 
         </div>
         <div class="social-icons mt-4 text-center">
-            <a href="https://facebook.com" class="social-icon facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://tiktok.com" class="social-icon tiktok"><i class="fab fa-tiktok"></i></a>
-            <a href="https://youtube.com" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
-            <a href="https://telegram.org" class="social-icon telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://www.facebook.com" target="_blank" class="social-icon facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com" target="_blank" class="social-icon tiktok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+            <a href="https://telegram.org" target="_blank" class="social-icon telegram"><i class="fab fa-telegram"></i></a>
         </div>
 
 
@@ -138,5 +92,6 @@ $pages = array(
         <p class="text-center mt-3 mb-0">&copy; 2026 Laptop Shop. All Rights Reserved.</p>
     </div>
 </footer>
-      
+<?php include __DIR__ . "/layouts/footer.php" ?>
+   
 

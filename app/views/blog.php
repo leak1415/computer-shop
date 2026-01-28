@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <a href="#" class="btn btn-outline-primary btn-lg">
+                    <a href="?page=blog" class="btn btn-outline-primary btn-lg">
                         View All Articles <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
@@ -80,8 +80,8 @@
                         <h5 class="mb-0"><i class="bi bi-search"></i> Search</h5>
                     </div>
                     <div class="card-body">
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search articles..." aria-label="Search">
+                        <form method="GET" class="d-flex">
+                            <input class="form-control me-2" type="search" name="search" placeholder="Search articles..." aria-label="Search">
                             <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
                         </form>
                     </div>
@@ -120,11 +120,11 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-unstyled">
-                            <li class="mb-2"><a href="#" class="text-decoration-none"><i class="bi bi-tag"></i> Laptops</a></li>
-                            <li class="mb-2"><a href="#" class="text-decoration-none"><i class="bi bi-tag"></i> Gadgets</a></li>
-                            <li class="mb-2"><a href="#" class="text-decoration-none"><i class="bi bi-tag"></i> Budgeting</a></li>
-                            <li class="mb-2"><a href="#" class="text-decoration-none"><i class="bi bi-tag"></i> Tech Tips</a></li>
-                            <li class="mb-0"><a href="#" class="text-decoration-none"><i class="bi bi-tag"></i> Reviews</a></li>
+                            <li class="mb-2"><a href="?page=blog&category=laptops" class="text-decoration-none"><i class="bi bi-tag"></i> Laptops</a></li>
+                            <li class="mb-2"><a href="?page=blog&category=gadgets" class="text-decoration-none"><i class="bi bi-tag"></i> Gadgets</a></li>
+                            <li class="mb-2"><a href="?page=blog&category=budgeting" class="text-decoration-none"><i class="bi bi-tag"></i> Budgeting</a></li>
+                            <li class="mb-2"><a href="?page=blog&category=tips" class="text-decoration-none"><i class="bi bi-tag"></i> Tech Tips</a></li>
+                            <li class="mb-0"><a href="?page=blog&category=reviews" class="text-decoration-none"><i class="bi bi-tag"></i> Reviews</a></li>
                         </ul>
                     </div>
                 </div>
@@ -136,9 +136,9 @@
                     </div>
                     <div class="card-body">
                         <p>Subscribe to get the latest updates and articles delivered to your inbox.</p>
-                        <form>
+                        <form method="POST" action="?page=blog">
                             <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="Enter your email">
+                                <input type="email" class="form-control" name="newsletter_email" placeholder="Enter your email" required>
                             </div>
                             <button type="submit" class="btn btn-primary w-100"><i class="bi bi-send"></i> Subscribe</button>
                         </form>
