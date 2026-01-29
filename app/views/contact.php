@@ -102,7 +102,7 @@ $pages = array(
 
            
             <div class="col-12 col-md-4 mb-4 mb-md-0">
-                <img src="app/views/images/computer-logo-vector-design-template_724865-987 (1).avif" alt="Laptop Shop Logo" class="footer-logo mb-2">
+                <img src="app/views/images/logo.png" alt="Laptop Shop Logo" class="footer-logo mb-2">
                 <p class="footer-text">Quality laptops, accessories, and trusted service since 2026.</p>
             </div>
 
@@ -115,10 +115,11 @@ $pages = array(
 
             <!-- App Download -->
             <div class="col-12 col-md-4 mb-4 mb-md-0">
-                <h5 class="footer-title">Get Our App</h5>
+                <h5 class="footer-title">Get Our Instagram
+                    <br> and Website</h5>
                 <div class="d-flex justify-content-center justify-content-md-start gap-2">
-                    <a href="#"><img src="app/views/images/Google-app-NS.webp" alt="Google Play" class="app-badge"></a>
-                    <a href="#"><img src="app/views/images/apple-app-store-qr-code-sticker-u1842-a173-x418.png" alt="App Store" class="app-badge"></a>
+                    <a href="#"><img src="app/views/images/512NaxP2nPd2c.webp" alt="Google Play" class="app-badge"></a>
+                    <a href="#"><img src="app/views/images/website.png" alt="App Store" class="app-badge"></a>
                 </div>
             </div>
 
@@ -133,7 +134,7 @@ $pages = array(
 
         <div class="payment-methods mt-4 text-center">
             <p class="mb-2"><strong>We Accept:</strong></p>
-            <img src="app/views/images/payment-methods-epicerie-ludo.png" alt="Payment Methods" class="payment-img">
+            <img src="app/views/images/payment.png" alt="Payment Methods" class="payment-img">
         </div>
         <p class="text-center mt-3 mb-0">&copy; 2026 Laptop Shop. All Rights Reserved.</p>
     </div>
