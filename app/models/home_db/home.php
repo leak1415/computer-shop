@@ -17,6 +17,6 @@ LEFT JOIN categories c ON p.category_id = c.category_id
 LEFT JOIN product_specs s ON p.product_id = s.product_id
 ";
 
-$result = $connection->query($sql);
+$result = $pdo->query($sql);
 ?>
 

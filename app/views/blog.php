@@ -1,6 +1,7 @@
 <?php include __DIR__ . "/layouts/header.php" ?>
 <?php include "navbar.php" ?>
 
+
 <section class="hero-section d-flex align-items-center bg-secondary text-white">
     <div class="hero-content container text-center">
         <h1 class="main-title text-uppercase">OUR BLOG</h1>
@@ -57,10 +58,11 @@
                         echo '<h5 class="card-title">' . $blog['title'] . '</h5>';
                         echo '<p class="text-muted small mb-2"><i class="bi bi-person"></i> ' . $blog['author'] . ' | <i class="bi bi-calendar"></i> ' . $blog['date'] . '</p>';
                         echo '<p class="card-text flex-grow-1">' . $blog['content'] . '</p>';
-                        echo '<a href="?page=blog-detail&id=' . $blog['id'] . '" class="btn btn-primary mt-auto"><i class="bi bi-arrow-right-circle"></i> Read More</a>';
+                        echo '<a href="?page=blog-detail?id=' . $blog['id'] . '" class="btn btn-primary mt-auto"><i class="bi bi-arrow-right-circle"></i> Read More</a>';
                         echo '</div>';
                         echo '</div>';
                         echo '</div>';
+                    
                     }
                     ?>
                 </div>

@@ -1,6 +1,6 @@
-<?php include __DIR__ . "/layouts/header.php" ?>
-<?php include "navbar.php" ?>
-<?php require_once "app/models/home_db/home.php";?>
+<?php include "layouts/header.php" ?>
+<?php include "navbar.php"?>
+<?php require_once __DIR__ . "/../models/home_db/home.php";?>
 <?php require_once __DIR__ . "/../models/home_db/image_db.php";?>
 
 <section class="hero-section d-flex align-items-center">
@@ -14,13 +14,15 @@
         </p>
 
         <div class="hero-buttons">
-            <a href="index.php?page=catalog" class="btn btn-primary btn-lg shop-btn rounded-pill shadow-lg me-3">
+            <a href="./category.php" class="btn btn-primary btn-lg shop-btn rounded-pill shadow-lg me-3">
                 <i class="bi bi-bag-fill me-2"></i>SHOP NOW
             </a>
             <a href="#categories" class="btn btn-outline-light btn-lg rounded-pill shadow-lg">
                 <i class="bi bi-grid-3x3-gap me-2"></i>BROWSE CATEGORIES
             </a>
         </div>
+
+    </div>
     </div>
 </section>
 
@@ -37,7 +39,7 @@
                 <div class="promo-card enhanced-promo">
                     <div class="promo-left">
                         <div class="discount-badge">-20%</div>
-                        <img src="app/views/images/1.png" alt="Gaming Laptop" class="promo-img">
+                        <img src="/app/views/images/1.png" alt="Gaming Laptop" class="promo-img">
                     </div>
                     <div class="promo-right">
                         <div class="brand-header">
@@ -59,7 +61,7 @@
                             <span class="original-price">$1,899</span>
                             <span class="sale-price">$1,519</span>
                         </div>
-                        <a href="app/views/rog.php" class="promo-link">
+                        <a href="./rog.php" class="promo-link">
                             <i class="bi bi-arrow-right-circle"></i> Shop Gaming Laptops
                         </a>
                     </div>
@@ -70,7 +72,7 @@
                 <div class="promo-card enhanced-promo">
                     <div class="promo-left">
                         <div class="discount-badge new-badge">NEW</div>
-                        <img src="app/views/images/49.png" alt="MacBook" class="promo-img">
+                        <img src="/app/views/images/49.png" alt="MacBook" class="promo-img">
                     </div>
                     <div class="promo-right">
                         <div class="brand-header">
@@ -91,7 +93,7 @@
                         <div class="price-tag">
                             <span class="sale-price">$1,999</span>
                         </div>
-                        <a href="index.php?page=catalog" class="promo-link">
+                        <a href="./rog.php" class="promo-link">
                             <i class="bi bi-arrow-right-circle"></i> Shop Apple Laptops
                         </a>
                     </div>
@@ -107,7 +109,7 @@
                 <div class="promo-card enhanced-promo">
                     <div class="promo-left">
                         <div class="discount-badge">-15%</div>
-                        <img src="app/views/images/3.png" alt="MSI Gaming Laptop" class="promo-img">
+                        <img src="/app/views/images/3.png" alt="MSI Gaming Laptop" class="promo-img">
                     </div>
                     <div class="promo-right">
                         <div class="brand-header">
@@ -129,7 +131,7 @@
                             <span class="original-price">$1,599</span>
                             <span class="sale-price">$1,359</span>
                         </div>
-                        <a href="app/views/rog.php" class="promo-link">
+                        <a href="./rog.php" class="promo-link">
                             <i class="bi bi-arrow-right-circle"></i> Shop MSI Gaming
                         </a>
                     </div>
@@ -140,7 +142,7 @@
                 <div class="promo-card enhanced-promo">
                     <div class="promo-left">
                         <div class="discount-badge">-10%</div>
-                        <img src="app/views/images/4.png" alt="Lenovo Laptop" class="promo-img">
+                        <img src="/app/views/images/4.png" alt="Lenovo Laptop" class="promo-img">
                     </div>
                     <div class="promo-right">
                         <div class="brand-header">
@@ -162,7 +164,7 @@
                             <span class="original-price">$1,299</span>
                             <span class="sale-price">$1,169</span>
                         </div>
-                        <a href="index.php?page=catalog" class="promo-link">
+                        <a href="./rog.php" class="promo-link">
                             <i class="bi bi-arrow-right-circle"></i> Shop Business Laptops
                         </a>
                     </div>
@@ -183,7 +185,7 @@
         <div class="products-grid">
             <?php 
             $image_index = 0;
-            while($row = $result->fetch_assoc()) { 
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 // Get image from image_db array, loop back to start if we run out
                 $image_name = $images[$image_index % count($images)];
                 $image_index++;
@@ -192,7 +194,7 @@
                 <div class="product-image">
 
                     <!-- Dynamic image from image_db -->
-                    <img src="app/views/images/<?php echo $image_name; ?>"
+                    <img src="/app/views/images/<?php echo $image_name; ?>"
                         alt="<?php echo htmlspecialchars($row['product_name']); ?>" class="card-img-top">
 
 
@@ -245,7 +247,7 @@
 </section>
 
 <!-- All Products Section (Hidden by default) -->
-<section id="allProductsSection" class="py-5 bg-light" style="display: none;">
+<section id="allProductsSection" class="py-5 bg-light" ">
     <div class="container">
         <div class="text-center mb-5">
             <h2 class="section-title">ALL PRODUCTS</h2>
@@ -269,8 +271,7 @@
         <div class="products-grid" id="allProductsGrid">
             <?php 
             // Reset result pointer to show all products again
-            $result->data_seek(0);
-            $image_index = 0;
+
             
             // Create additional sample products for demonstration
             $additional_products = [
@@ -367,13 +368,13 @@
             ];
             
             // Display original products
-            while($row = $result->fetch_assoc()) { 
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 $image_name = $images[$image_index % count($images)];
                 $image_index++;
             ?>
             <div class="product-card all-product" data-category="all">
                 <div class="product-image">
-                    <img src="app/views/images/<?php echo $image_name; ?>" alt="<?php echo htmlspecialchars($row['product_name']); ?>" class="card-img-top">
+                    <img src="/app/views/images/<?php echo $image_name; ?>" alt="<?php echo htmlspecialchars($row['product_name']); ?>" class="card-img-top">
                     <div class="product-overlay">
                         <button class="btn btn-primary btn-sm quick-view-btn">
                             <i class="bi bi-eye"></i> Quick View
@@ -420,7 +421,7 @@
             ?>
             <div class="product-card all-product" data-category="<?php echo $category_class; ?>">
                 <div class="product-image">
-                    <img src="app/views/images/<?php echo $image_name; ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>" class="card-img-top">
+                    <img src="/app/views/images/<?php echo $image_name; ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>" class="card-img-top">
                     <div class="product-overlay">
                         <button class="btn btn-primary btn-sm quick-view-btn">
                             <i class="bi bi-eye"></i> Quick View
@@ -463,52 +464,7 @@
     </div>
 </section>
 
-<script>
-function toggleAllProducts() {
-    const section = document.getElementById('allProductsSection');
-    const buttonText = document.getElementById('viewAllText');
-    const buttonIcon = document.getElementById('viewAllIcon');
-    
-    if (section.style.display === 'none') {
-        section.style.display = 'block';
-        buttonText.textContent = 'Hide All Products';
-        buttonIcon.className = 'bi bi-arrow-up';
-        
-        // Smooth scroll to the new section
-        section.scrollIntoView({ behavior: 'smooth' });
-    } else {
-        section.style.display = 'none';
-        buttonText.textContent = 'View All Products';
-        buttonIcon.className = 'bi bi-arrow-right';
-        
-        // Smooth scroll back to featured products
-        document.querySelector('.featured-products-section').scrollIntoView({ behavior: 'smooth' });
-    }
-}
 
-function filterProducts(category) {
-    const products = document.querySelectorAll('.all-product');
-    const buttons = document.querySelectorAll('.btn-outline-primary');
-    
-    // Update active button
-    buttons.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.textContent.toLowerCase().includes(category) || 
-            (category === 'all' && btn.textContent === 'All Products')) {
-            btn.classList.add('active');
-        }
-    });
-    
-    // Filter products
-    products.forEach(product => {
-        if (category === 'all' || product.dataset.category === category) {
-            product.style.display = 'block';
-        } else {
-            product.style.display = 'none';
-        }
-    });
-}
-</script>
 
 <!-- Categories Section -->
 <section id="categories" class="py-5">
@@ -526,7 +482,7 @@ function filterProducts(category) {
                     </div>
                     <h4>Gaming Laptops</h4>
                     <p>High-performance machines for ultimate gaming experience</p>
-                    <a href="index.php?page=catalog&category=gaming" class="category-link">
+                    <a href="./category.php" class="category-link">
                         Shop Now <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
@@ -539,7 +495,7 @@ function filterProducts(category) {
                     </div>
                     <h4>Business Laptops</h4>
                     <p>Professional laptops for productivity and reliability</p>
-                    <a href="index.php?page=catalog&category=business" class="category-link">
+                    <a href="./category.php" class="category-link">
                         Shop Now <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
@@ -552,7 +508,7 @@ function filterProducts(category) {
                     </div>
                     <h4>Student Laptops</h4>
                     <p>Affordable and portable laptops for education</p>
-                    <a href="index.php?page=catalog&category=student" class="category-link">
+                    <a href="./category.php" class="category-link">
                         Shop Now <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
@@ -565,7 +521,7 @@ function filterProducts(category) {
                     </div>
                     <h4>Creative Laptops</h4>
                     <p>Powerful machines for design and content creation</p>
-                    <a href="index.php?page=catalog&category=creative" class="category-link">
+                    <a href="./category.php" class="category-link">
                         Shop Now <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
@@ -693,7 +649,7 @@ function filterProducts(category) {
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="app/views/images/46.png" alt="John Smith">
+                            <img src="/app/views/images/46.png" alt="John Smith">
                             <div class="avatar-badge">
                                 <i class="bi bi-controller"></i>
                             </div>
@@ -729,7 +685,7 @@ function filterProducts(category) {
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="app/views/images/47.png" alt="Sarah Johnson">
+                            <img src="/app/views/images/47.png" alt="Sarah Johnson">
                             <div class="avatar-badge">
                                 <i class="bi bi-briefcase"></i>
                             </div>
@@ -765,7 +721,7 @@ function filterProducts(category) {
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="app/views/images/48.png" alt="Mike Chen">
+                            <img src="/app/views/images/48.png" alt="Mike Chen">
                             <div class="avatar-badge">
                                 <i class="bi bi-mortarboard"></i>
                             </div>
@@ -782,4 +738,4 @@ function filterProducts(category) {
     </div>
 </section>
 
-<?php include __DIR__ . "/layouts/footer.php" ?>
+<?php include "layouts/footer.php" ?>

@@ -1,7 +1,11 @@
 <?php include "layouts/header.php" ?>
 <?php include "navbar.php"?>
-<?php require_once "app/models/home_db/home.php";?>
+<?php require_once __DIR__ . '/../models/home_db/home.php';?>
 <?php require_once __DIR__ . "/../models/home_db/image_db.php";?>
+<?php require_once __DIR__ . '/../../init.php';
+
+    validate_login()
+?>
 
 <!-- ROG Gaming Laptops Section -->
 <section class="py-5">
@@ -14,7 +18,7 @@
                     <i class="bi bi-cpu-fill text-white" style="font-size: 40px;"></i>
                 </div>
                 <h1 class="display-4 fw-bold text-uppercase">ROG Gaming Laptops</h1>
-                <p class="lead text-muted">Ultimate gaming machines for champions</p>
+                <p class="lead text-muted " style="margin-right: 22vw;"></p>
             </div>
 
             <div class="row justify-content-center mb-4">
@@ -44,7 +48,8 @@
         <div class="products-grid">
             <?php 
             $image_index = 0;
-            while($row = $result->fetch_assoc()) { 
+            
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 // Get image from image_db array, loop back to start if we run out
                 $image_name = $images[$image_index % count($images)];
                 $image_index++;
@@ -53,7 +58,7 @@
                 <div class="product-image">
 
                     <!-- Dynamic image from image_db -->
-                    <img src="app/views/images/<?php echo $image_name; ?>"
+                    <img src="/app/views/images/<?php echo $image_name; ?>"
                         alt="<?php echo htmlspecialchars($row['product_name']); ?>" class="card-img-top">
 
 
@@ -99,7 +104,7 @@
 
         <!-- Back to Home -->
         <div class="text-center mt-5">
-            <a href="index.php?page=home" class="btn btn-outline-secondary btn-lg">
+            <a href="./home.php" class="btn btn-outline-secondary btn-lg">
                 <i class="bi bi-arrow-left"></i> Back to Home
             </a>
         </div>

@@ -1,6 +1,6 @@
 <?php include __DIR__ . "/layouts/header.php"; ?>
 <?php include "navbar.php"; ?>
-<?php require_once "app/models/home_db/home.php"; ?>
+<?php require_once __DIR__ . '/../models/home_db/home.php'; ?>
 <?php require_once __DIR__ . "/../models/home_db/image_db.php"; ?>
 
 <!-- SALE HEADER -->
@@ -11,7 +11,7 @@
         <p class="lead mb-4">
             Up to <strong>40% OFF</strong> on selected laptops
         </p>
-        <a href="#sale-products" class="btn btn-light btn-lg rounded-pill">
+        <a href="./category.php" class="btn btn-light btn-lg rounded-pill">
             View Deals
         </a>
     </div>
@@ -26,9 +26,9 @@
                 <div class="card shadow-sm border-0 h-100">
                     <div class="row g-0 align-items-center">
                         <div class="col-md-5 text-center p-3">
-                            <img src="app/views/images/<?php echo $images[0]; ?>"
-                                 class="img-fluid"
-                                 alt="Gaming Laptop">
+                            <img src="/app/views/images/<?php echo $images[0]; ?>"
+                                class="img-fluid"
+                                alt="Gaming Laptop">
                         </div>
                         <div class="col-md-7 p-4">
                             <span class="badge bg-danger mb-2">SAVE 20%</span>
@@ -41,8 +41,7 @@
                                 $1,899
                             </small>
                             <div class="mt-3">
-                                <a href="index.php?page=catalog"
-                                   class="btn btn-outline-primary btn-sm rounded-pill">
+                                <a href="./category.php" class="btn btn-outline-primary btn-sm rounded-pill">
                                     Shop Now
                                 </a>
                             </div>
@@ -55,9 +54,9 @@
                 <div class="card shadow-sm border-0 h-100">
                     <div class="row g-0 align-items-center">
                         <div class="col-md-5 text-center p-3">
-                            <img src="app/views/images/<?php echo $images[1]; ?>"
-                                 class="img-fluid"
-                                 alt="MacBook">
+                            <img src="/app/views/images/<?php echo $images[1]; ?>"
+                                class="img-fluid"
+                                alt="MacBook">
                         </div>
                         <div class="col-md-7 p-4">
                             <span class="badge bg-success mb-2">NEW DEAL</span>
@@ -67,8 +66,7 @@
                             </p>
                             <h5 class="text-primary">$1,999</h5>
                             <div class="mt-3">
-                                <a href="index.php?page=catalog"
-                                   class="btn btn-outline-primary btn-sm rounded-pill">
+                                <a href="./category.php" class="btn btn-outline-primary btn-sm rounded-pill">
                                     Shop Apple Deals
                                 </a>
                             </div>
@@ -86,7 +84,7 @@
     <div class="container">
 
         <div class="text-center mb-5">
-            <h2 class="fw-bold">Discounted Laptops</h2>
+            <h2 class="fw-bold">Laptops in Stock</h2>
             <p class="text-muted">
                 Best value laptops at unbeatable prices
             </p>
@@ -95,7 +93,7 @@
         <div class="row row-cols-1 row-cols-md-4 g-4">
             <?php
             $image_index = 0;
-            while ($row = $result->fetch_assoc()) {
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 if ($row['old_price'] <= $row['price']) continue; // SALE ONLY
                 $image = $images[$image_index % count($images)];
                 $image_index++;
@@ -104,51 +102,56 @@
                     (($row['old_price'] - $row['price']) / $row['old_price']) * 100
                 );
             ?>
-            <div class="col">
-                <div class="card h-100 border-0 shadow-sm">
-
-                    <div class="position-relative text-center p-3">
-                        <span class="badge bg-danger position-absolute top-0 end-0 m-2">
-                            -<?= $discount ?>%
-                        </span>
-                        <img src="app/views/images/<?php echo $image; ?>"
-                             class="img-fluid"
-                             style="height:180px; object-fit:contain;"
-                             alt="<?php echo htmlspecialchars($row['product_name']); ?>">
-                    </div>
-
-                    <div class="card-body text-center">
-                        <small class="text-muted">
-                            <?php echo $row['category_name']; ?>
-                        </small>
-                        <h6 class="fw-bold mt-1">
-                            <?php echo $row['product_name']; ?>
-                        </h6>
-
-                        <div class="text-warning mb-2">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
+                <div class="col">
+                    <div class="product-card h-100">
+                        <div class="position-relative text-center p-3 product-image">
+                            <span class="badge bg-danger position-absolute top-0 end-0 m-2">
+                                -<?= $discount ?>%
+                            </span>
+                            <img src="/app/views/images/<?php echo $image; ?>"
+                                class="img-fluid card-img-top"
+                                style="height:180px; object-fit:contain;"
+                                alt="<?php echo htmlspecialchars($row['product_name']); ?>">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm quick-view-btn">
+                                    <i class="bi bi-eye"></i> Quick View
+                                </button>
+                            </div>
                         </div>
 
-                        <h5 class="text-primary mb-0">
-                            $<?php echo number_format($row['price'], 0); ?>
-                        </h5>
-                        <small class="text-muted text-decoration-line-through">
-                            $<?php echo number_format($row['old_price'], 0); ?>
-                        </small>
-                    </div>
+                        <div class="card-body text-center">
+                            <div class="product-category">
+                                <?php echo $row['category_name']; ?>
+                            </div>
+                            <h6 class="product-title fw-bold mt-1">
+                                <?php echo $row['product_name']; ?>
+                            </h6>
 
-                    <div class="card-footer bg-white border-0 text-center">
-                        <button class="btn btn-primary btn-sm rounded-pill w-100">
-                            <i class="bi bi-cart-plus"></i> Add to Cart
-                        </button>
-                    </div>
+                            <div class="product-rating text-warning mb-2">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
 
+                            <div class="product-price">
+                                <span class="current-price text-primary">
+                                    $<?php echo number_format($row['price'], 0); ?>
+                                </span>
+                                <span class="old-price text-muted text-decoration-line-through">
+                                    $<?php echo number_format($row['old_price'], 0); ?>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="card-footer bg-white border-0 text-center">
+                            <button class="btn btn-primary rounded-pill w-100 add-to-cart" style="padding: 12px 20px; font-weight: 700; letter-spacing: 1px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;" data-product-id="<?php echo $row['product_id']; ?>" data-product-name="<?php echo htmlspecialchars($row['product_name']); ?>" data-product-price="<?php echo $row['price']; ?>">
+                                <i class="bi bi-bag-check"></i> SHOW DETAIL
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
             <?php } ?>
         </div>
 
@@ -162,8 +165,8 @@
         <p class="lead text-muted mb-4">
             Grab your discounted laptop today
         </p>
-        <a href="index.php?page=catalog"
-           class="btn btn-danger btn-lg rounded-pill">
+        <a href="?page=catalog"
+            class="btn btn-danger btn-lg rounded-pill">
             Browse All Deals
         </a>
     </div>
